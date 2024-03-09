@@ -9,19 +9,7 @@ const initialState = {
     lastname: "",
     phoneNo: "",
     email: "",
-    emailVerification: false,
-    signUpDate: moment().format(),
-    lastActive: moment().format(),
     password: "",
-    preferences: [],
-    subscriptionPlan: {},
-    bots: [
-      {
-        _id: "",
-        botName: "",
-        botPicture: "",
-      },
-    ],
   },
   isAuthenticated: false,
 };
