@@ -6,6 +6,7 @@
 
 import UserLogIn from "../pages/auth/login";
 import UserSignup from "../pages/auth/signup";
+import Dashboard from "../pages/dashboard";
 import LandingPage from "../pages/landing";
 
 const routes = [
@@ -24,6 +25,11 @@ const routes = [
     path: "/auth/user/signup",
     Component: UserSignup,
     name: "User Signup",
+  },
+  {
+    path: "/workspace/",
+    Component: Dashboard,
+    name: "users workspace dashboard",
   },
 ];
 

@@ -12,7 +12,6 @@ const UserSignup = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastNamne] = useState("");
   const [error, setError] = useState("");
-  const [message, setMessage] = useState("");
   const navigate = useNavigate();
   const [status, setStatus] = useState("idle");
 
@@ -28,7 +27,6 @@ const UserSignup = () => {
       apiRegisterUser(
         { email, password, firstName, lastName },
         setError,
-        setMessage,
         setStatus
       )
     );
@@ -62,7 +60,7 @@ const UserSignup = () => {
               error ? "text-red-500" : "text-green-500"
             }`}
           >
-            {error ? error : message}
+            {error ? error : ""}
           </h1>
           <form onSubmit={handleSignUp} className="space-y-6">
             <div>

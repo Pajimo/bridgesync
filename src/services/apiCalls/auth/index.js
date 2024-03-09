@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import {
   setUserAuthStatus,
   setUserProfile,
-} from "../../../redux/reducers/userState/Profile/userProfile";
+} from "../../../redux/reducers/Profile/userProfile";
 import Axios from "../../axiosService";
 import { apiErrorMessage } from "../../../utils/apiErrorCall";
 
@@ -14,7 +14,7 @@ export const apiLogInUser =
         // console.log(response.data, "res");
         dispatch(setUserProfile(response.data));
         setStatus("success");
-        dispatch(setUserAuthStatus(true));
+        // dispatch(setUserAuthStatus(true));
       })
       .catch((error) => {
         // console.log(error, "error");
@@ -24,25 +24,24 @@ export const apiLogInUser =
       });
   };
 
-export const apiRegisterUser =
-  (data, setError, setMessage, setStatus) => (dispatch) => {
-    Axios.post("/user/register", data)
-      .then((response) => {
-        // console.log(response, "res");
-        setError("");
-        setMessage(response.data);
-        setStatus("success");
-        // setError(response.);
-        //   dispatch(loginSuccess(response.data));
-      })
-      .catch((error) => {
-        // console.log(error, "error");
-        setStatus("idle");
-        setMessage("");
-        setError(error?.response?.data);
-        //   dispatch(loginFail("Invalid credentials provided"));
-      });
-  };
+export const apiRegisterUser = (data, setError, setStatus) => (dispatch) => {
+  Axios.post("/user/register", data)
+    .then((response) => {
+      const { data } = response?.data;
+      // console.log(response, "res");
+      setError("");
+      setStatus("success");
+      dispatch(setUserProfile(data));
+      // setError(response.);
+      //   dispatch(loginSuccess(response.data));
+    })
+    .catch((error) => {
+      // console.log(error, "error");
+      setStatus("idle");
+      setError(error?.response?.data);
+      //   dispatch(loginFail("Invalid credentials provided"));
+    });
+};
 
 export const apiLogoutUser = (navigate) => (dispatch) => {
   dispatch(setUserAuthStatus(false));

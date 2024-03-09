@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { setDashboardNav } from "../redux/reducers/userState/Dashboard/dashboard";
+import { setDashboardNav } from "../redux/reducers/Dashboard/dashboard";
 import { useAppDispatch, useAppSelector } from "../hooks/reduxDispatch";
 import colors from "../theme/color";
 import { FaArrowRight } from "react-icons/fa6";
