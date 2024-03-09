@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet";
 import Wrapper from "../../components/Wrapper";
 import colors from "../../theme/color";
 import { FaArrowRight } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
@@ -46,7 +47,8 @@ const LandingPage = () => {
                 Transforming Your Healthcare Collaboration Experience with the
                 Power of AI.
               </p>
-              <div
+              <Link
+                to={"/auth/user/login"}
                 className="rounded-xl md:w-2/5 w-3/4 mt-10 py-4 px-6 bg-black flex items-center gap-2 justify-between cursor-pointer"
                 // style={{ backgroundColor: "#7DF9FF" }}
               >
@@ -57,7 +59,7 @@ const LandingPage = () => {
                   Create Workspace
                 </p>
                 <FaArrowRight color="white" />
-              </div>
+              </Link>
             </div>
             <div className="w-full h-[35rem]"></div>
           </div>
