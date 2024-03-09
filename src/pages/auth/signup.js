@@ -45,7 +45,7 @@ const UserSignup = () => {
     <>
       <div className="min-h-screen flex flex-col justify-center">
         <div
-          className="text-2xl font-bold text-gray-900 pl-8 flex gap-4 items-center cursor-pointer"
+          className="text-2xl font-bold text-gray-900 flex gap-4 justify-center cursor-pointer"
           onClick={() => navigate("/")}
         >
           <div className="bg-black rounded-lg">
