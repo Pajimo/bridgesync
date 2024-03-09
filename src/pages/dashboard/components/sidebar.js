@@ -32,7 +32,7 @@ const Sidebar = ({ name, channelsList, members }) => {
           {tempChannels?.map((channel) => {
             return (
               <div
-                className={`px-2 py-1 flex gap-2 items-center ${
+                className={`px-2 py-1 flex gap-2 items-center cursor-pointer ${
                   activePage?.id === channel?.id && "bg-cyan-600 rounded-xl"
                 }`}
                 key={channel.id}
@@ -52,7 +52,7 @@ const Sidebar = ({ name, channelsList, members }) => {
           {worskpaceMemebers?.map((member) => {
             return (
               <div
-                className={`p-2 flex flex-nowrap gap-2 items-center  ${
+                className={`cursor-pointer p-2 flex flex-nowrap gap-2 items-center  ${
                   activePage?.id === member?.id && "bg-cyan-600 rounded-xl"
                 }`}
                 key={member?.id}
