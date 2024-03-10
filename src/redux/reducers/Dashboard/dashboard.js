@@ -28,10 +28,17 @@ const userDashboardSlice = createSlice({
     setActivePage: (state, { payload }) => {
       state.activePage = payload;
     },
+    setChannelMsg: (state, { payload }) => {
+      state.workspace = payload;
+    },
   },
 });
 
-export const { setDashboardNav, setWorkspaceInfo, setActivePage } =
-  userDashboardSlice.actions;
+export const {
+  setDashboardNav,
+  setWorkspaceInfo,
+  setActivePage,
+  setChannelMsg,
+} = userDashboardSlice.actions;
 
 export default userDashboardSlice.reducer;

@@ -16,7 +16,7 @@ const Sidebar = ({ name, channelsList, members }) => {
   const dispatch = useAppDispatch();
   const { workspace, activePage } = useAppSelector((s) => s.userDashboard);
 
-  console.log(workspace);
+  console.log(activePage);
   // taking id
   const [active, setActive] = useState("");
 
