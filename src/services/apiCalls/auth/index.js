@@ -35,7 +35,6 @@ export const apiRegisterUser = (data, setError, setStatus) => (dispatch) => {
   Axios.post("/user/register", data)
     .then((response) => {
       const { userData, workspaceData, message } = response.data;
-      console.log(data, "res");
       setError("");
       setStatus("success");
       dispatch(setUserProfile(userData));

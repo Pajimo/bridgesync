@@ -9,7 +9,7 @@ Axios.defaults.baseURL = devApiUrl;
 
 // console.log(process.env.REACT_APP_NODE_ENV, "proc");
 
-Axios.defaults.timeout = 10000;
+// Axios.defaults.timeout = 10000;
 
 Axios.defaults.validateStatus = (status) =>
   (status === 200 || status < 300) && (status >= 400 || status < 500);

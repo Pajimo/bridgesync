@@ -48,7 +48,7 @@ const LandingPage = () => {
                 Power of AI.
               </p>
               <Link
-                to={"/auth/user/login"}
+                to={"/auth/user/signup"}
                 className="rounded-xl md:w-2/5 w-3/4 mt-10 py-4 px-6 bg-black flex items-center gap-2 justify-between cursor-pointer"
                 // style={{ backgroundColor: "#7DF9FF" }}
               >

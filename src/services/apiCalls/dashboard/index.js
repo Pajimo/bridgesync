@@ -4,6 +4,7 @@ import Axios from "../../axiosService";
 import {
   setActivePage,
   setChannelMsg,
+  setWorkspaceInfo,
 } from "../../../redux/reducers/Dashboard/dashboard";
 import { apiErrorMessage, apiSuccessCall } from "../../../utils/apiErrorCall";
 
@@ -51,7 +52,7 @@ export const apiMessaging = (messageData, setStatus) => (dispatch) => {
       dispatch(setChannelMsg(res.data.workspaceData));
       dispatch(setActivePage(res.data.workspaceData.channels[0]));
       // apiSuccessCall(res.data.message);
-      setStatus("success");
+      setStatus("idle");
     })
     .catch((error) => {
       // console.log(error, "error");
@@ -60,16 +61,18 @@ export const apiMessaging = (messageData, setStatus) => (dispatch) => {
     });
 };
 
-export const apiFetchWorkspace = (workspaceId, setStatus) => (dispatch) => {
-  Axios.get(`/workstation/${workspaceId}`)
-    .then((res) => {
-      console.log(res.data, "suc");
+export const apiFetchWorkspace = () => (dispatch) => {
+  Axios.get(`/fetch/workstation`)
+    .then((response) => {
+      console.log(response.data, "suc");
+      const { workspaceData } = response.data;
+      dispatch(setWorkspaceInfo(workspaceData));
       // apiSuccessCall(res.data.message);
-      setStatus("success");
+      // setStatus("success");
     })
     .catch((error) => {
       // console.log(error, "error");
-      apiErrorMessage(error);
-      setStatus("idle");
+      // apiErrorMessage(error);
+      // setStatus("idle");
     });
 };
