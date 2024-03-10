@@ -1,13 +1,12 @@
-import {
-  setUserMessage,
-  setUserSingleBot,
-} from "../../../redux/reducers/userState/Chatbot";
 import { setUserProfile } from "../../../redux/reducers/Profile/userProfile";
-import {
-  apiErrorMessage,
-  apiSuccessCall,
-} from "../../../../utils/apiErrorCall";
+
 import Axios from "../../axiosService";
+import {
+  setActivePage,
+  setChannelMsg,
+  setWorkspaceInfo,
+} from "../../../redux/reducers/Dashboard/dashboard";
+import { apiErrorMessage, apiSuccessCall } from "../../../utils/apiErrorCall";
 
 // export const apiCreateChanel = (id, setStatus) => (dispatch) => {
 //   Axios.post("/user/createBot", chatData)
@@ -40,38 +39,40 @@ export const apiFetchSingleChannel = (channelId, setStatus) => (dispatch) => {
     });
 };
 
-export const apiMessaging =
-  (messageData, setStatus, allChatData) => (dispatch) => {
-    Axios.post("/messaging/workspace", messageData)
-      .then((res) => {
-        // console.log(res.data, "suc");
-        const chatObj = {
-          role: "system",
-          content: res.data.botMessage,
-        };
-
-        const addAllChat = [...allChatData, chatObj];
-        dispatch(setUserMessage(addAllChat));
-        // apiSuccessCall(res.data.message);
-        setStatus("success");
-      })
-      .catch((error) => {
-        // console.log(error, "error");
-        apiErrorMessage(error);
-        setStatus("idle");
-      });
-  };
-
-export const apiFetchWorkspace = (workspaceId, setStatus) => (dispatch) => {
-  Axios.get(`/workstation/${workspaceId}`, messageData)
+export const apiMessaging = (messageData, setStatus) => (dispatch) => {
+  Axios.post("/messaging/workspace", messageData)
     .then((res) => {
-      console.log(res.data, "suc");
+      // console.log(res.data, "suc");
+      // const chatObj = {
+      //   role: "system",
+      //   content: res.data.botMessage,
+      // };
+
+      // const addAllChat = [...allChatData, chatObj];
+      dispatch(setChannelMsg(res.data.workspaceData));
+      dispatch(setActivePage(res.data.workspaceData.channels[0]));
       // apiSuccessCall(res.data.message);
-      setStatus("success");
+      setStatus("idle");
     })
     .catch((error) => {
       // console.log(error, "error");
       apiErrorMessage(error);
       setStatus("idle");
+    });
+};
+
+export const apiFetchWorkspace = () => (dispatch) => {
+  Axios.get(`/fetch/workstation`)
+    .then((response) => {
+      console.log(response.data, "suc");
+      const { workspaceData } = response.data;
+      dispatch(setWorkspaceInfo(workspaceData));
+      // apiSuccessCall(res.data.message);
+      // setStatus("success");
+    })
+    .catch((error) => {
+      // console.log(error, "error");
+      // apiErrorMessage(error);
+      // setStatus("idle");
     });
 };

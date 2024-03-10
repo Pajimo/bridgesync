@@ -2,21 +2,11 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxDispatch";
 import { setActivePage } from "../../../redux/reducers/Dashboard/dashboard";
 
-const Sidebar = ({ name, channelsList, members }) => {
-  const tempChannels = [
-    { name: "general", id: "Tks3wdefa", type: "channels" },
-    { name: "product", id: "Tks3wdefb", type: "channels" },
-  ];
-
-  const worskpaceMemebers = [
-    { name: "Anjolaoluwa Adeleke", id: "Tks3wdefc", type: "member" },
-    { name: "Temitope Alabi", id: "Tks3wdefd", type: "member" },
-  ];
-
+const Sidebar = ({ name }) => {
   const dispatch = useAppDispatch();
   const { workspace, activePage } = useAppSelector((s) => s.userDashboard);
 
-  console.log(workspace);
+  console.log(activePage);
   // taking id
   const [active, setActive] = useState("");
 
