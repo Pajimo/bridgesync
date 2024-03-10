@@ -35,7 +35,7 @@ const UserSignup = () => {
   useEffect(() => {
     if (status === "success") {
       setStatus("idle");
-      // navigate("/user/chatbots");
+      navigate("/workspace");
     }
   }, [status]);
 

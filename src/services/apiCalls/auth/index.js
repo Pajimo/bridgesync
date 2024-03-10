@@ -5,6 +5,10 @@ import {
 } from "../../../redux/reducers/Profile/userProfile";
 import Axios from "../../axiosService";
 import { apiErrorMessage } from "../../../utils/apiErrorCall";
+import {
+  setActivePage,
+  setWorkspaceInfo,
+} from "../../../redux/reducers/Dashboard/dashboard";
 
 export const apiLogInUser =
   ({ email, password }, setStatus) =>
@@ -12,7 +16,10 @@ export const apiLogInUser =
     Axios.post("/user/login", { email, password })
       .then((response) => {
         // console.log(response.data, "res");
-        dispatch(setUserProfile(response.data));
+        const { userData, workspaceData, message } = response.data;
+        dispatch(setUserProfile(userData));
+        dispatch(setWorkspaceInfo(workspaceData));
+        dispatch(setActivePage(workspaceData.channels[0]));
         setStatus("success");
         // dispatch(setUserAuthStatus(true));
       })
@@ -27,11 +34,13 @@ export const apiLogInUser =
 export const apiRegisterUser = (data, setError, setStatus) => (dispatch) => {
   Axios.post("/user/register", data)
     .then((response) => {
-      const { data } = response?.data;
-      // console.log(response, "res");
+      const { userData, workspaceData, message } = response.data;
+      console.log(data, "res");
       setError("");
       setStatus("success");
-      dispatch(setUserProfile(data));
+      dispatch(setUserProfile(userData));
+      dispatch(setWorkspaceInfo(workspaceData));
+      dispatch(setActivePage(workspaceData.channels[0]));
       // setError(response.);
       //   dispatch(loginSuccess(response.data));
     })
