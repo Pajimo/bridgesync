@@ -6,6 +6,7 @@ const initialState = {
   currentDashboardNav: "Dashboard",
   workspace: [
     {
+      id: "",
       name: "",
       channels: [channelsStructure],
       members: [channelsStructure],

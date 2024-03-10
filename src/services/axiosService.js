@@ -2,10 +2,10 @@ import Axios, { AxiosError, AxiosRequestConfig } from "axios";
 
 const ApiUrl = "https://intelliverback.azurewebsites.net/api/bridgesync";
 
-const devApiUrl = "http://localhost:7071/api/bridgesync";
+const devApiUrl = "http://localhost:7071/api/";
 
-Axios.defaults.baseURL =
-  process.env.REACT_APP_NODE_ENV === "development" ? devApiUrl : ApiUrl;
+Axios.defaults.baseURL = devApiUrl;
+// process.env.REACT_APP_NODE_ENV === "development" ? devApiUrl : ApiUrl;
 
 // console.log(process.env.REACT_APP_NODE_ENV, "proc");
 

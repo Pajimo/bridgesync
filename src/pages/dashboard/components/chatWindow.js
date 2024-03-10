@@ -7,7 +7,9 @@ const ChatWindow = () => {
       <div className="bg-white p-4 rounded-lg shadodw-lg flex-groxw ">
         <div className="pb-2 text-lg font-semibold flex gap-2 items-center border-b border-gray-200 ">
           {activePage?.type === "channels" && <p className="text-2xl">#</p>}
-          {activePage?.name}
+          {activePage?.name
+            ? activePage?.name
+            : activePage?.firstName + " " + activePage?.lastName}
         </div>
 
         {/* Chat messages would go here */}
@@ -29,6 +31,8 @@ const ChatWindow = () => {
           className="w-full p-2 border rounded-md"
           placeholder={`Message ${activePage?.type === "channels" ? "#" : ""} ${
             activePage?.name
+              ? activePage?.name
+              : activePage?.firstName + " " + activePage?.lastName
           }`}
         />
       </div>

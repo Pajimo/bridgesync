@@ -7,7 +7,6 @@ const initialState = {
     userId: "",
     firstname: "",
     lastname: "",
-    phoneNo: "",
     email: "",
     password: "",
   },
